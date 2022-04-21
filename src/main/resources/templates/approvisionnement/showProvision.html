@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Liste des approvisionnements</title>
+    <link th:href="@{/css/bootstrap.min.css}" rel="stylesheet" >
+</head>
+<body>
+<div class="container" >
+    <h2>Liste des approvisionnements</h2>
+    <table class="table table-stripped table-hover" >
+        <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Produit</th>
+            <th scope="col">Quantité</th>
+            <th scope="col">Action</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each = "appro:${listAppro}">
+            <th scope="row" th:text = "${appro.id}"></th>
+            <td th:text="${appro.produit.libelle}"></td>
+            <td th:text="${appro.quantite}"></td>
+            <td >
+                <a th:href="@{/approvisionner/edit/{id}(id=${appro.id})}">Edit |</a>
+                <a th:href="@{/approvisionner/delete/{id}(id=${appro.id})}">Delete</a>
+            </td>
+        </tr>
+
+        </tbody>
+    </table>
+
+</div>
+<script type="text/javascript" th:src="@{/js/bootstrap.bundle.min.js}"></script>
+</body>
+</html>
