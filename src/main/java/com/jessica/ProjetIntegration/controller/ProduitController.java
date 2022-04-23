@@ -25,7 +25,7 @@ public class ProduitController {
     private ApprovisionnementService approvisionnementService;
 
     //liste complète des produits
-    @GetMapping("/show")
+    @GetMapping({"/show",""})
     public String afficherProduit(Model model){
         model.addAttribute("listProduits", produitService.showAllProduit());
         return "produits/showProducts";
@@ -81,5 +81,10 @@ public class ProduitController {
     public String provisionProduit(@ModelAttribute("produit")Produit produit){
         produitService.saveProduit(produit);
         return "redirect:/produit/show";
+    }
+
+    @GetMapping("/baba")
+    public String textproduit(){
+        return "test";
     }
 }

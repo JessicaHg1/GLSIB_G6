@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Produits</title>
+    <link rel="stylesheet"  th:href="@{/css/bootstrap.min.css}"/>
+
+</head>
+<body>
+
+<div class="container">
+    <h1> Liste des catégories </h1>
+
+    <table class="table">
+        <thead>
+        <tr>
+            <th scope="col">Désignation</th>
+
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="categorie: ${categorie}">
+            <th th:text="${categorie.id}" scope="row"></th>
+            <td th:text="${categorie.designation}"></td>
+
+
+            <td>
+                <a th:href="@{/categorie/edit/{id}(id=${categorie.id})}"> Edit </a>
+
+                <a th:href="@{/categorie/delete/{id}(id=${categorie.id})}"> Delete </a>
+            </td>
+
+        </tr>
+        </tbody>
+    </table>
+    <a class="btn btn-primary" th:href="@{/categorie/form}">Créer une nouvelle catégorie</a>
+</div>
+
+
+<script rel="text/javascript"  th:src="@{/js/bootstrap.bundle.min.js}"></script>
+</body>
+</html>

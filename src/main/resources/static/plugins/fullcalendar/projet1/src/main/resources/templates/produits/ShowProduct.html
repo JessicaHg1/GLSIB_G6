@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Produits</title>
+    <link rel="stylesheet"  th:href="@{/css/bootstrap.min.css}"/>
+
+</head>
+<body>
+
+<div class="container">
+    <h1> Liste des produits </h1>
+
+    <table class="table">
+        <thead>
+        <tr>
+            <th scope="col">ID</th>
+            <th scope="col">Libelle</th>
+            <th scope="col">Quantité</th>
+            <th scope="col">Stock</th>
+            <th scope="col">Date de creation</th>
+            <th scope="col">Prix</th>
+            <th scope="col">Action</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="produit : ${produits}">
+            <th th:text="${produit.id}" scope="row"></th>
+            <td th:text="${produit.libelle}"></td>
+            <td th:text="${produit.qtStock}"></td>
+            <td th:text="${produit.qtSeuil}"></td>
+            <td th:text="${produit.dateCreation}"></td>
+            <td th:text="${produit.prix}"></td>
+            <td th:text="${produit.categorie.designation}"></td>
+
+            <td>
+                <a th:href="@{/produits/edit/{id}(id=${produit.id})}"> Edit </a>
+
+                 <a th:href="@{/produits/delete/{id}(id=${produit.id})}"> Delete </a>
+            </td>
+
+        </tr>
+        </tbody>
+    </table>
+    <a class="btn btn-primary" th:href="@{/produits/form}">Créer un nouveau produit</a>
+</div>
+
+
+<script rel="text/javascript"  th:src="@{/js/bootstrap.bundle.min.js}"></script>
+</body>
+</html>
