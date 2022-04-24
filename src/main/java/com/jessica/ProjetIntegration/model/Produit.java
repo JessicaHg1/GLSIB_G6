@@ -6,6 +6,7 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.time.LocalDate;
+import java.util.List;
 
 @Entity
 @Data
@@ -19,16 +20,22 @@ public class Produit {
     private String libelle;
     private int qte_stock;
     private int qte_seuil;
-    private double prix;
+    private int prix;
     private LocalDate date_creation;
 
     @ManyToOne()
-    @JoinColumn(name = "categorie_id", insertable = false, updatable = false)
+    @JoinColumn(name = "categorie_id")
     private Categorie categorie;
-    private  int categorie_id;
 
-    @ManyToOne()
-    @JoinColumn(name = "approvisionnement_id", insertable = false, updatable = false)
-    private Approvisionnement approvisionnement;
-    private int approvisionnement_id;
+
+
+    @OneToMany(mappedBy = "produit")
+    private List<Approvisionnement> approvisionnements;
+
+
+
+    // @ManyToOne()
+    // @JoinColumn(name = "approvisionnement_id", insertable = false, updatable = false)
+    // private Approvisionnement approvisionnement;
+    // private int approvisionnement_id;
 }

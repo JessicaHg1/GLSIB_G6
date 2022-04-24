@@ -18,8 +18,8 @@
         </tr>
         </thead>
         <tbody>
-        <tr th:each = "appro:${listAppro}">
-            <th scope="row" th:text = "${appro.id}"></th>
+        <tr th:each = "appro,iterator: ${listAppro}">
+            <th scope="row" th:text = "${iterator.index}"></th>
             <td th:text="${appro.produit.libelle}"></td>
             <td th:text="${appro.quantite}"></td>
             <td >

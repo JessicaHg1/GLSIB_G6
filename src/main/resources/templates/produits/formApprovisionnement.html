@@ -1,21 +1,46 @@
+
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-    <link th:href="@{/css/bootstrap.min.css}" rel="stylesheet" >
-</head>
-<body>
-<div class="container">
-    <h2>Formulaire d'approvisionnement</h2>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Formulaire d'approvisionnement</title>
 
-        <form th:action="@{/produit/approv}" th:object="${unProduit}" method="post">
+  <!-- Google Font: Source Sans Pro -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+  <!-- Font Awesome -->
+  <link rel="stylesheet" th:href="@{/plugins/fontawesome-free/css/all.min.css}">
+  <!-- Theme style -->
+  <link rel="stylesheet" th:href="@{/dist/css/adminlte.min.css}">
+</head>
+<body class="hold-transition sidebar-mini">
+<div class="wrapper">
+  <!-- Navbar -->
+ <div th:replace="fragment/nav"></div>
+  <!-- /.navbar -->
+
+  <!-- Main Sidebar Container -->
+  <div th:replace="fragment/side_bar"></div>
+
+  <!-- Content Wrapper. Contains page content -->
+  <div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+
+
+    <!-- Main content -->   
+    <section class="content">
+      <div class="container-fluid">
+        <!-- /.row -->
+
+        <h2>Formulaire d'approvisionnement</h2>
+
+        <form th:action="@{/produit/approv}" method="post">
             <div class="mb-3">
-                <input type="hidden" th:field="*{id}"  name="id" class="form-control">
+                <input type="hidden" name="id" class="form-control" th:value="${unProduit.id}">
             </div>
             <div class="mb-3">
                 <label class="form-label">Libelle</label>
-                <input type="text" th:field="*{libelle}"  class="form-control" placeholder="Libellé du produit">
+                <input type="text" name="libelle" th:value="${unProduit.libelle}"  class="form-control" placeholder="Libellé du produit">
             </div>
 
 
@@ -27,7 +52,34 @@
         <button type="submit" class="btn btn-primary">Enregistrer</button>
     </form>
 
+
+
+      </div><!-- /.container-fluid -->
+    </section>
+    <!-- /.content -->
+  </div>
+  <!-- /.content-wrapper -->
+ <div th:replace="fragment/footer">
+ </div>
+
+  <!-- Control Sidebar -->
+  <aside class="control-sidebar control-sidebar-dark">
+    <!-- Control sidebar content goes here -->
+  </aside>
+  <!-- /.control-sidebar -->
 </div>
-<script type="text/javascript" th:src="@{/js/bootstrap.bundle.min.js}"></script>
+<!-- ./wrapper -->
+
+<!-- jQuery -->
+<script th:src="@{/plugins/jquery/jquery.min.js}"></script>
+<!-- Bootstrap 4 -->
+<script th:src="@{/plugins/bootstrap/js/bootstrap.bundle.min.js}"></script>
+<!-- jquery-validation -->
+<script th:src="@{/plugins/jquery-validation/jquery.validate.min.js}"></script>
+<script th:src="@{/plugins/jquery-validation/additional-methods.min.js}"></script>
+<!-- AdminLTE App -->
+<script th:src="@{/dist/js/adminlte.min.js}"></script>
+<!-- AdminLTE for demo purposes -->
+<script th:src="@{/dist/js/demo.js}"></script>
 </body>
 </html>

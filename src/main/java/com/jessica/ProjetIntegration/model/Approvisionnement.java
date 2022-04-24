@@ -22,8 +22,8 @@ public class Approvisionnement {
     private int quantite;
     private LocalDate date_mv_stock;
 
+
     @ManyToOne()
-    @JoinColumn(name = "produit_id", insertable = false, updatable = false)
+    @JoinColumn(name = "produit_id")
     private Produit produit;
-    private  int produit_id;
 }

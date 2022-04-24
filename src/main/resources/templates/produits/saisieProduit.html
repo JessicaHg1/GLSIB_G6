@@ -1,43 +1,129 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+
 <head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-    <link th:href="@{/css/bootstrap.min.css}" rel="stylesheet" >
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>AdminLTE 3 | Validation Form</title>
+
+    <!-- Google Font: Source Sans Pro -->
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" th:href="@{/plugins/fontawesome-free/css/all.min.css}">
+    <!-- Theme style -->
+    <link rel="stylesheet" th:href="@{/dist/css/adminlte.min.css}">
+        
+    <link rel="stylesheet" th:href="@{/plugins/select2/css/select2.min.css}">
+    <link rel="stylesheet" th:href="@{/plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css}">
 </head>
-<body>
-<div class="container">
-    <h2>Formulaire de saisie de produit</h2>
-    <form th:action="@{/produit/save}" method="post">
 
-        <div class="mb-3">
-            <label class="form-label">Libelle</label>
-            <input type="text"  name="libelle" class="form-control" required placeholder="Libellé du produit">
+<body class="hold-transition sidebar-mini">
+    <div class="wrapper">
+        <!-- Navbar -->
+        <div th:replace="fragment/nav"></div>
+        <!-- /.navbar -->
+
+        <!-- Main Sidebar Container -->
+        <div th:replace="fragment/side_bar"></div>
+
+        <!-- Content Wrapper. Contains page content -->
+        <div class="content-wrapper">
+
+            <section class="content-header">
+                <div class="container-fluid">
+                  <div class="row mb-2">
+                    <div class="col-sm-12">
+                      <h1 style="text-align: center;">Saisie des produits</h1>
+                
+                    </div>
+                  
+                  </div>
+                </div>
+              </section>   
+
+
+            <!-- Main content -->
+            <section class="content">
+                <div class="container-fluid mb-3">
+
+                    <!-- /.row -->
+             
+                    <div class="card card-primary">
+                        <div class="card-header">
+                            <h3 class="card-title"> Formulaire de saisie des produits</h3>
+                        </div>
+                        <!-- /.card-header -->
+                        <!-- form start -->
+                        <form th:action="@{/produit/save}" method="post">
+                            <div class="card-body">
+                                <div class="form-group">
+                                    <label class="form-label">Libelle</label>
+                                    <input type="text" name="libelle" class="form-control" required
+                                        placeholder="Libellé du produit">
+                                </div>
+                                <div class="form-group">
+                                    <label class="form-label">Quantité seuil</label>
+                                    <input type="number" name="qte_seuil" class="form-control" placeholder="Quantité Seuil">
+                                </div>
+                                <div class="form-group">
+                                    <label class="form-label">Prix </label>
+                                    <input type="number" name="prix" class="form-control" placeholder="Prix">
+
+                                </div>
+
+                                <div class="form-group">
+
+                                    <label class="form-label">Categorie</label>
+                                    <select name="categorie" class="form-control select2" required
+                                        style="width: 100%;">
+                                        <option value="" class="form-control"> Selectionner une catégorie</option>
+                                        <option th:each="category:${listCategorie}" th:value="${category.id_cat}"
+                                            th:text="${category.designation}" class="form-control">
+                                        </option>
+                                    </select>
+                                </div>
+
+                            </div>
+                            <!-- /.card-body -->
+
+                            <div class="card-footer">
+                                <button type="submit" class="btn btn-primary">Enregistrer</button>
+                            </div>
+                        </form>
+                    </div>
+
+                </div><!-- /.container-fluid -->
+            </section>
+            <!-- /.content -->
         </div>
-        <div class="mb-3">
-            <label class="form-label">Quantité seuil</label>
-            <input type="number" name="qte_seuil" class="form-control">
-        </div>
-        <div class="mb-3">
-            <label class="form-label">Prix </label>
-            <input type="number" name="prix" class="form-control">
-        </div>
-        <div class="mb-3">
-            <label class="form-label">Categorie</label>
-            <select name="categorie_id" required >
-                <option value="" class="form-control" > Selectionner une catégorie</option>
-                <option th:each="category:${listCategorie}"
-                        th:value="${category.id_cat}"
-                        th:text="${category.designation}" class="form-control">
-                </option>
-            </select>
+        <!-- /.content-wrapper -->
+        <div th:replace="fragment/footer">
         </div>
 
-        <button type="submit" class="btn btn-primary">Enregistrer</button>
-    </form>
+        <!-- Control Sidebar -->
+        <aside class="control-sidebar control-sidebar-dark">
+            <!-- Control sidebar content goes here -->
+        </aside>
+        <!-- /.control-sidebar -->
+    </div>
+    <!-- ./wrapper -->
 
-</div>
+    <!-- jQuery -->
+    <script th:src="@{/plugins/jquery/jquery.min.js}"></script>
+    <!-- Bootstrap 4 -->
+    <script th:src="@{/plugins/bootstrap/js/bootstrap.bundle.min.js}"></script>
+    <!-- jquery-validation -->
+    <script th:src="@{/plugins/jquery-validation/jquery.validate.min.js}"></script>
+    <script th:src="@{/plugins/jquery-validation/additional-methods.min.js}"></script>
+    <!-- AdminLTE App -->
+    <script th:src="@{/dist/js/adminlte.min.js}"></script>
+    <!-- AdminLTE for demo purposes -->
+    <script th:src="@{/dist/js/demo.js}"></script>
 
-<script type="text/javascript" th:src="@{/js/bootstrap.bundle.min.js}"></script>
+    <script th:src="@{/plugins/select2/js/select2.full.min.js}"></script>
+    <!-- Bootstrap4 Duallistbox -->
+    <script th:src="@{/plugins/bootstrap4-duallistbox/jquery.bootstrap-duallistbox.min.js}"></script>
 </body>
+
 </html>
