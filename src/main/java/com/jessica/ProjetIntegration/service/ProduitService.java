@@ -42,4 +42,9 @@ public class ProduitService {
         }
     }
 
+    public void updateQuantiteStock(int id, int quantite){
+
+        produitRepository.updateQuantiteStock(id, quantite);
+    }
+
 }

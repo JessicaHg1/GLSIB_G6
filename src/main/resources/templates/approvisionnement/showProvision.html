@@ -14,6 +14,7 @@
             <th scope="col">#</th>
             <th scope="col">Produit</th>
             <th scope="col">Quantité</th>
+            <th scope="col">Date d'approvisionnement</th>
             <th scope="col">Action</th>
         </tr>
         </thead>
@@ -22,6 +23,7 @@
             <th scope="row" th:text = "${appro.id}"></th>
             <td th:text="${appro.produit.libelle}"></td>
             <td th:text="${appro.quantite}"></td>
+            <td th:text="${appro.date_mv_stock}"></td>
             <td >
                 <a th:href="@{/approvisionner/edit/{id}(id=${appro.id})}">Edit |</a>
                 <a th:href="@{/approvisionner/delete/{id}(id=${appro.id})}">Delete</a>

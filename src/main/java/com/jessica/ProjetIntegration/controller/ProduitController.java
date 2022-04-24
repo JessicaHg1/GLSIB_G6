@@ -21,9 +21,6 @@ public class ProduitController {
     @Autowired
     private CategorieService categorieService;
 
-    @Autowired
-    private ApprovisionnementService approvisionnementService;
-
     //liste complète des produits
     @GetMapping("/show")
     public String afficherProduit(Model model){
@@ -73,7 +70,7 @@ public class ProduitController {
     @GetMapping("/approv/{id}")
     public String approvisionnerProduit(@PathVariable("id") int id, Model model){
         model.addAttribute("unProduit", produitService.selectedProduit(id));
-        return "produits/formApprovisionnement";
+        return "produits/approv";
     }
 
     //Approvisionner un produit

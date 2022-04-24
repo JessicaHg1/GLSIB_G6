@@ -27,8 +27,5 @@ public class Produit {
     private Categorie categorie;
     private  int categorie_id;
 
-    @ManyToOne()
-    @JoinColumn(name = "approvisionnement_id", insertable = false, updatable = false)
-    private Approvisionnement approvisionnement;
-    private int approvisionnement_id;
+
 }

@@ -19,16 +19,27 @@ public class ApprovisionnementController {
     @Autowired
     private ApprovisionnementService approvisionnementService;
 
+    @Autowired
+    private ProduitService produitService;
+
     @GetMapping("/show")
     public String afficherAppro(Model model){
         model.addAttribute("listAppro", approvisionnementService.showAllAppro());
         return "approvisionnement/showProvision";
     }
 
+    @GetMapping("/create")
+    public String afficherFormulaire(Model model){
+        model.addAttribute("listProduits", produitService.showAllProduit());
+        return "approvisionnement/formApprovisionnement";
+    }
+
     @PostMapping("/save")
-    public String saveAppro(Approvisionnement approvisionnement){
+    public String save(Approvisionnement approvisionnement){
         approvisionnement.setDate_mv_stock(LocalDate.now());
         approvisionnementService.save(approvisionnement);
+        produitService.updateQuantiteStock(approvisionnement.getProduit_id(),
+                approvisionnement.getQuantite());
         return "redirect:/approvisionner/show";
     }
 

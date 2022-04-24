@@ -23,6 +23,7 @@ public class CategorieController {
 
     @GetMapping("/formCategorie")
     public String formCategorie(){
+
         return "categorie/formCategorie";
     }
 
