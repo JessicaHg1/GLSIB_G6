@@ -79,8 +79,8 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr th:each = "categorie:${listCategorie}">
-                                        <th scope="row" th:text = "${categorie.id_cat}"></th>
+                                    <tr th:each = "categorie,iterator:${listCategorie}">
+                                        <th scope="row" th:text = "${iterator.index+1}"></th>
                                         <td th:text="${categorie.designation}"></td>
                                         <td >
                                             <a class="btn btn-primary"

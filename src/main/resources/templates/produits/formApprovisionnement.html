@@ -27,12 +27,27 @@
     <!-- Content Header (Page header) -->
 
 
+    <section class="content-header">
+      <div class="container-fluid">
+          <div class="row mb-2">
+              <div class="col-sm-6">
+                  <h1>Formulaire d'approvisionnement</h1>
+              </div>
+              <div class="col-sm-6">
+                  <ol class="breadcrumb float-sm-right">
+                      <li class="breadcrumb-item"><a th:href="@{/produit/show}"
+                              class="btn btn-primary">Retour</a></li>
+                  </ol>
+              </div>
+          </div>
+      </div><!-- /.container-fluid -->
+  </section>
+
+
     <!-- Main content -->   
     <section class="content">
       <div class="container-fluid">
         <!-- /.row -->
-
-        <h2>Formulaire d'approvisionnement</h2>
 
         <form th:action="@{/produit/approv}" method="post">
             <div class="mb-3">
@@ -47,7 +62,7 @@
 
         <div class="mb-3">
             <label class="form-label">Quantité</label>
-            <input type="text"  name="quantite" class="form-control">
+            <input type="number"  name="quantite" class="form-control">
         </div>
         <button type="submit" class="btn btn-primary">Enregistrer</button>
     </form>

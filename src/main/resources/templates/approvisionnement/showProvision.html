@@ -1,37 +1,133 @@
+
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
-    <meta charset="UTF-8">
-    <title>Liste des approvisionnements</title>
-    <link th:href="@{/css/bootstrap.min.css}" rel="stylesheet" >
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Liste des approvisionnements</title>
+
+  <!-- Google Font: Source Sans Pro -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+  <!-- Font Awesome -->
+  <link rel="stylesheet" th:href="@{/plugins/fontawesome-free/css/all.min.css}">
+  <!-- Theme style -->
+  <link rel="stylesheet" th:href="@{/dist/css/adminlte.min.css}">
 </head>
-<body>
-<div class="container" >
-    <h2>Liste des approvisionnements</h2>
-    <table class="table table-stripped table-hover" >
-        <thead>
-        <tr>
-            <th scope="col">#</th>
-            <th scope="col">Produit</th>
-            <th scope="col">Quantité</th>
-            <th scope="col">Action</th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr th:each = "appro,iterator: ${listAppro}">
-            <th scope="row" th:text = "${iterator.index}"></th>
-            <td th:text="${appro.produit.libelle}"></td>
-            <td th:text="${appro.quantite}"></td>
-            <td >
-                <a th:href="@{/approvisionner/edit/{id}(id=${appro.id})}">Edit |</a>
-                <a th:href="@{/approvisionner/delete/{id}(id=${appro.id})}">Delete</a>
-            </td>
-        </tr>
+<body class="hold-transition sidebar-mini">
+<div class="wrapper">
+  <!-- Navbar -->
+ <div th:replace="fragment/nav"></div>
+  <!-- /.navbar -->
 
-        </tbody>
-    </table>
+  <!-- Main Sidebar Container -->
+  <div th:replace="fragment/side_bar"></div>
 
+  <!-- Content Wrapper. Contains page content -->
+  <div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+
+
+    <section class="content-header">
+        <div class="container-fluid">
+            <div class="row mb-2">
+                <div class="col-sm-6">
+                    <h1>Liste des approvisionnements</h1>
+                </div>
+                <div class="col-sm-6">
+                    <ol class="breadcrumb float-sm-right">
+                        <li class="breadcrumb-item"><a th:href="@{/produit/show}"
+                                class="btn btn-primary">Ajouter un nouvel approvisionnement</a></li>
+                    </ol>
+                </div>
+            </div>
+        </div><!-- /.container-fluid -->
+    </section>
+
+
+    <!-- Main content -->   
+    <section class="content">
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="card">
+                                <div class="card">
+                                    <div class="card-header">
+
+
+                                        <div class="card-tools">
+                                            <div class="input-group input-group-sm" style="width: 150px;">
+                                                <input type="text" name="table_search" class="form-control float-right"
+                                                    placeholder="Search">
+
+                                                <div class="input-group-append">
+                                                    <button type="submit" class="btn btn-default">
+                                                        <i class="fas fa-search"></i>
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- /.card-header -->
+                                    <div class="card-body table-responsive p-0">
+                                        <table class="table table-hover text-nowrap">
+                                            <thead>
+                                                <tr>
+                                                    <th scope="col">#</th>
+                                                    <!-- <th scope="col">Produit</th> -->
+                                                    <th scope="col">Quantité</th>
+                                                    <th scope="col">Action</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+
+                                                <tr th:each = "appro,iterator: ${listAppro}">
+                                                    <th scope="row" th:text="${iterator.index+1}"></th>
+                                                    <td th:text="${appro.produit.libelle}"></td>
+                                                    <td th:text="${appro.quantite}"></td>
+                                                    <td >
+                                                        <a class="btn btn-primary" 
+                                                        th:href="@{/approvisionner/edit/{id}(id=${appro.id})}">Edit |</a>
+                                                        <a class="btn btn-danger" 
+                                                        th:href="@{/approvisionner/delete/{id}(id=${appro.id})}">Delete</a>
+                                                    </td>
+                                                </tr>
+                                        
+
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                    <!-- /.card-body -->
+                                </div>
+                                <!-- /.card -->
+                            </div>
+                        </div>
+
+                    </div><!-- /.container-fluid -->
+
+    </section>
+    <!-- /.content -->
+  </div>
+  <!-- /.content-wrapper -->
+ <div th:replace="fragment/footer">
+ </div>
+
+  <!-- Control Sidebar -->
+  <aside class="control-sidebar control-sidebar-dark">
+    <!-- Control sidebar content goes here -->
+  </aside>
+  <!-- /.control-sidebar -->
 </div>
-<script type="text/javascript" th:src="@{/js/bootstrap.bundle.min.js}"></script>
+<!-- ./wrapper -->
+
+<!-- jQuery -->
+<script th:src="@{/plugins/jquery/jquery.min.js}"></script>
+<!-- Bootstrap 4 -->
+<script th:src="@{/plugins/bootstrap/js/bootstrap.bundle.min.js}"></script>
+<!-- jquery-validation -->
+<script th:src="@{/plugins/jquery-validation/jquery.validate.min.js}"></script>
+<script th:src="@{/plugins/jquery-validation/additional-methods.min.js}"></script>
+<!-- AdminLTE App -->
+<script th:src="@{/dist/js/adminlte.min.js}"></script>
+<!-- AdminLTE for demo purposes -->
+<script th:src="@{/dist/js/demo.js}"></script>
 </body>
 </html>

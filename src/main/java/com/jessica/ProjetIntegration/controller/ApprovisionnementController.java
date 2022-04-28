@@ -22,6 +22,7 @@ public class ApprovisionnementController {
     @GetMapping("/show")
     public String afficherAppro(Model model){
         model.addAttribute("listAppro", approvisionnementService.showAllAppro());
+        System.out.println(approvisionnementService.showAllAppro());
         return "approvisionnement/showProvision";
     }
 

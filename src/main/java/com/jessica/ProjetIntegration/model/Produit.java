@@ -3,6 +3,7 @@ package com.jessica.ProjetIntegration.model;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import lombok.ToString;
 
 import javax.persistence.*;
 import java.time.LocalDate;
@@ -13,6 +14,7 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 @Table(name = "produit")
+@ToString(exclude = "approvisionnements")
 public class Produit {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -26,7 +28,6 @@ public class Produit {
     @ManyToOne()
     @JoinColumn(name = "categorie_id")
     private Categorie categorie;
-
 
 
     @OneToMany(mappedBy = "produit")

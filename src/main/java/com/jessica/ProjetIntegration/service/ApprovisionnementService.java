@@ -20,7 +20,7 @@ public class ApprovisionnementService {
     }
 
     public List<Approvisionnement> showAllAppro(){
-        return approvisionnementRepository.findAll();
+        return approvisionnementRepository.findByProduitNotNull();
     }
 
 
